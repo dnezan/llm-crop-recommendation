@@ -8,8 +8,7 @@ import streamlit as st
 import geemap.colormaps as cm
 import geemap.foliumap as geemap
 import datetime
-from datetime import datetime
-from datetime import date
+
 from io import BytesIO
 buf = BytesIO(b'test')
 import time
@@ -134,7 +133,8 @@ def app():
                     ###############END OF LANDSAT CODE
                     if map_type =='Default':
                         m.addLayer(ee_object, {'color': 'FFFFFF', 'width': 4, 'fillColor': '000000', 'fillOpacity': 0}, 'Selected plot', True, 0.8)
- 
+                        #geemap.ee_export_image(ee_object, filename=filename, scale=90, region=roi, file_per_band=True
+)
                     if map_type == 'Agri':
                         m.addLayer(dataset, vis_agri, 'Agri')
 
@@ -173,7 +173,11 @@ def app():
                 with row3_col1:
                     st.markdown(":blue[**Season:**] " + str(season))
                     st.markdown(":blue[**Date of sowing:**] " + str(d))
-                    st.markdown(":blue[**Date of harvesting:**] " + str(d))
+                    
+                    #####CALCULATING HARVESTING DATE
+                    newdate = datetime.timedelta(days=120)
+                    newdate = d + newdate
+                    st.markdown(":blue[**Date of harvesting:**] " + str(newdate))
 
                 with row3_col2:
                     file_loc = "./data/scraped/" + str(district).lower().title() + ".csv"
@@ -190,15 +194,15 @@ def app():
 
 def calc_season(d):
     print(d)
-    d1 = date(2023,4,1)
-    d2 = date(2023,5,1)
-    d3 = date(2023,6,1)
-    d4 = date(2023,7,1)
-    d5 = date(2023,8,1)
-    d6 = date(2023,9,1)
-    d7 = date(2023,10,1)
-    d8 = date(2023,11,1)
-    d9 = date(2024,1,30)
+    d1 = datetime.date(2023,4,1)
+    d2 = datetime.date(2023,5,1)
+    d3 = datetime.date(2023,6,1)
+    d4 = datetime.date(2023,7,1)
+    d5 = datetime.date(2023,8,1)
+    d6 = datetime.date(2023,9,1)
+    d7 = datetime.date(2023,10,1)
+    d8 = datetime.date(2023,11,1)
+    d9 = datetime.date(2024,1,30)
  
     if (d1<=d<d2):
         szn = 'Sorna'
