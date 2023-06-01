@@ -39,17 +39,24 @@ def app():
     st.title(" ")
     #        
 
-    st.markdown("""
+    st.markdown(
+        """
         <style>
-        #MainMenu {visibility: hidden;}        
-               .block-container {
-                    padding-top: 1rem;
-                    padding-bottom: 0rem;
-                    padding-left: 5rem;
-                    padding-right: 5rem;
-                }
+        .stApp {
+            max-width: 100%;
+            max-height: 100%
+        }
+        #MainMenu { visibility: hidden; }
+        .block-container {
+            padding-top: 1rem;
+            padding-bottom: 0rem;
+            padding-left: 5rem;
+            padding-right: 5rem;
+        }
         </style>
-        """, unsafe_allow_html=True)
+        """,
+        unsafe_allow_html=True
+    )
 
     row1_col1, row1_col2 = st.columns([3, 2])
 
@@ -133,8 +140,7 @@ def app():
                     ###############END OF LANDSAT CODE
                     if map_type =='Default':
                         m.addLayer(ee_object, {'color': 'FFFFFF', 'width': 4, 'fillColor': '000000', 'fillOpacity': 0}, 'Selected plot', True, 0.8)
-                        #geemap.ee_export_image(ee_object, filename=filename, scale=90, region=roi, file_per_band=True
-)
+
                     if map_type == 'Agri':
                         m.addLayer(dataset, vis_agri, 'Agri')
 
