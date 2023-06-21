@@ -15,10 +15,10 @@ import time
 import pandas as pd
 import matplotlib.pyplot as plt
 
-import ee
-service_account = 'streamlit-dinesh@agri-tech-disys.iam.gserviceaccount.com'
-credentials = ee.ServiceAccountCredentials(service_account, 'agri-tech-disys-6818963e669e.json')
-ee.Initialize(credentials)
+#import ee
+#service_account = 'streamlit-dinesh@agri-tech-disys.iam.gserviceaccount.com'
+#credentials = ee.ServiceAccountCredentials(service_account, 'agri-tech-disys-6818963e669e.json')
+#ee.Initialize(credentials)
 
 def save_uploadedfile(uploadedfile):
      with open(os.path.join("tempDir",uploadedfile.name),"wb") as f:
