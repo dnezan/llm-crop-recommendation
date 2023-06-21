@@ -4,7 +4,6 @@ folium==0.13.0
 geemap[extra]
 geopandas
 ee
-os
 datetime
 pandas
 matplotlib
