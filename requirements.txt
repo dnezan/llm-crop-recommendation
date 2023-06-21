@@ -6,7 +6,6 @@ geopandas
 ee
 datetime
 pandas
-json
 matplotlib
 jupyter-server-proxy
 keplergl
