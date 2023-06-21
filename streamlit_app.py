@@ -8,17 +8,22 @@ import streamlit as st
 import geemap.colormaps as cm
 import geemap.foliumap as geemap
 import datetime
-
+import json
 from io import BytesIO
 buf = BytesIO(b'test')
 import time
 import pandas as pd
 import matplotlib.pyplot as plt
 
-#import ee
-#service_account = 'streamlit-dinesh@agri-tech-disys.iam.gserviceaccount.com'
-#credentials = ee.ServiceAccountCredentials(service_account, 'agri-tech-disys-6818963e669e.json')
-#ee.Initialize(credentials)
+# Data from the downloaded JSON file
+json_data = st.secrets["json_data"]
+# Preparing values
+json_object = json.loads(json_data, strict=False)
+service_account = st.secrets["service_account"]
+json_object = json.dumps(json_object)
+# Authorising the app
+credentials = ee.ServiceAccountCredentials(service_account, key_data=json_object)
+ee.Initialize(credentials)
 
 def save_uploadedfile(uploadedfile):
      with open(os.path.join("tempDir",uploadedfile.name),"wb") as f:
