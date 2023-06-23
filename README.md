@@ -24,11 +24,14 @@ Reth (short for Rust Ethereum, [pronunciation](https://twitter.com/kelvinfichter
 Accessible
 
 Integrated
-![gif1](https://github.com/dnezan/streamlit-geoapp-crop-suggestion/blob/main/data/screen1.png?raw=true)
+
+![gif1](https://github.com/dnezan/llm-crop-recommendation/blob/main/data/gifs/browse.gif?raw=true)
 
 Secure
 
 Versatile
+![gif1](https://github.com/dnezan/llm-crop-recommendation/blob/main/data/gifs/versatile.gif?raw=true)
+
 
 
 1. **Modularity**: Every component of Reth is built to be used as a library: well-tested, heavily documented and benchmarked. We envision that developers will import the node's crates, mix and match, and innovate on top of them. Examples of such usage include but are not limited to spinning up standalone P2P networks, talking directly to a node's database, or "unbundling" the node into the components you need. To achieve that, we are licensing Reth under the Apache/MIT permissive license. You can learn more about the project's components [here](./docs/repo/layout.md).
