@@ -1,35 +1,69 @@
 # Hyperspectral Satellite Imagery Viewer and Harvest Planning App 
 
-**Secure, user-friendly and data-driven Streamlit app deployed on Streamlit Community Cloud/Azure App Service**
+**Secure, user-friendly and data-driven agriculture-based Streamlit app deployed on Streamlit Community Cloud/Azure App Service**
 
 ![](./assets/reth-alpha.png)
 
 **[Installation](./install)**
 | [User Book](https://paradigmxyz.github.io/reth)
 | [Developer Docs](./docs)
-| [Crate Docs](https://paradigmxyz.github.io/reth/docs)
+| [Demo](https://agritech-crop-app.streamlit.app/)
 
 *The project is still work in progress, see the [disclaimer below](#status).*
 
-[codecov]: https://app.codecov.io/gh/paradigmxyz/reth
-[gh-ci]: https://github.com/paradigmxyz/reth/actions/workflows/ci.yml
-[gh-deny]: https://github.com/paradigmxyz/reth/actions/workflows/deny.yml
-[tg-badge]: https://img.shields.io/endpoint?color=neon&logo=telegram&label=chat&url=https%3A%2F%2Ftg.sumanjay.workers.dev%2Fparadigm%5Freth
+## Installation
+
+Pip install all the package including in *requirements.txt* in a Python>=3.8 environment.
+```sh
+git clone https://github.com/dnezan/llm-crop-recommendation
+pip install requirements.txt
+```
+To use your Google Earth Engine service account credentials, make sure to authenticate your access by using the code below, and add your credentials as Streamlit Secrets if you are deploying on Streamlit Community Cloud. You can also use Azure Key Vault if you are deploying on Azure.
+
+```python
+json_data = st.secrets["json_data"]
+# Preparing values
+json_object = json.loads(json_data, strict=False)
+service_account = st.secrets["service_account"]
+json_object = json.dumps(json_object)
+# Authorising the app
+credentials = ee.ServiceAccountCredentials(service_account, key_data=json_object)
+ee.Initialize(credentials)
+```
+
+Replace your credentials as a **Secret** in TOML format.
+```json
+json_data = { 
+    "type": "service_account",
+    "project_id": "****",
+    "private_key_id": "****",
+    "private_key": "****",
+    "client_email": "****.iam.gserviceaccount.com",
+    "client_id": "****",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "****",
+    "universe_domain": "googleapis.com"
+     }
+
+service_account = '****.iam.gserviceaccount.com'
+```
 
 ## How does it work?
 
-Reth (short for Rust Ethereum, [pronunciation](https://twitter.com/kelvinfichter/status/1597653609411268608)) is a new Ethereum full node implementation that is focused on being user-friendly, highly modular, as well as being fast and efficient. Reth is an Execution Layer (EL) and is compatible with all Ethereum Consensus Layer (CL) implementations that support the [Engine API](https://github.com/ethereum/execution-apis/tree/59e3a719021f48c1ef5653840e3ea5750e6af693/src/engine). It is originally built and driven forward by [Paradigm](https://paradigm.xyz/), and is licensed under the Apache and MIT licenses.
+some sample text here
 
 ## Goals
-Accessible
+1. **Accessible**
 
-Integrated
+2. **Integrated**
 
 ![gif1](https://github.com/dnezan/llm-crop-recommendation/blob/main/data/gifs/browse.gif?raw=true)
 
-Secure
+3. **Secure**
 
-Versatile
+4. **Versatile**
 ![gif1](https://github.com/dnezan/llm-crop-recommendation/blob/main/data/gifs/versatile.gif?raw=true)
 
 
@@ -45,37 +79,8 @@ Versatile
 
 The project is **not ready for production use**.
 
-Reth is fully capable of syncing, however, there are still some missing features, and we are still working on performance and stability. Because of this, we are still introducing breaking changes.
+As of June 26, 2023, the app is live on Streamlit community Cloud and the demo can be accessed by clicking on this !link(https://agritech-crop-app.streamlit.app/). It has also been deployed on Azure as an app service.
 
-It has **not been audited for security purposes** and should not be used in production yet.
-
-We will be updating the documentation with the completion status of each component, as well as include more contributing guidelines (design docs, architecture diagrams, repository layouts) and "good first issues".
-
-We appreciate your patience until we get there. Until then, we are happy to answer all questions in the Telegram link above.
-
-First, clone the repository:
-
-```sh
-git clone https://github.com/paradigmxyz/reth
-cd reth
-```
-
-Next, run the tests:
-
-```sh
-# Without Geth
-cargo test --workspace
-
-# With Geth
-cargo test --workspace --features geth-tests
-
-# With Ethereum Foundation tests
-#
-# Note: Requires cloning https://github.com/ethereum/tests
-# 
-#   cd testing/ef-tests && git clone https://github.com/ethereum/tests ethereum-tests
-cargo test --workspace --features ef-tests
-```
 
 We recommend using [`cargo nextest`](https://nexte.st/) to speed up testing. With nextest installed, simply substitute `cargo test` with `cargo nextest run`.
 
