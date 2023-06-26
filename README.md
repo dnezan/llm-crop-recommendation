@@ -32,7 +32,7 @@ ee.Initialize(credentials)
 ```
 
 Replace your credentials as a **Secret** in TOML format.
-```json
+```toml
 json_data = { 
     "type": "service_account",
     "project_id": "****",
