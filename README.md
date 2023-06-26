@@ -12,10 +12,6 @@
 </br>
 
 
-# 
-
-
-
 **[Installation](./install)**
 | [User Book](https://paradigmxyz.github.io/reth)
 | [Developer Docs](./docs)
@@ -93,20 +89,27 @@ The moisture index is ideal for finding water stress in plants. It uses the shor
 We can then feed our hyper-local data to our fine-tuned LLM (Large Language Model) to infer further insights and provide them to end-users after transliteration and translation into their native language. We are planning on fine-tuning our LLM using a large corpus of sourced agri data from universities and Indian government institutions. We can also provide retailer information if we have recommendations for fertilisers/pesticides/irrigation requirements.
 
 ## Goals
-1. **Accessible**
+**1. <u>Accessible**</u>
 
-2. **Integrated**
+The application aims to provide users with an accessible and user-friendly interface. The layout is designed to be intuitive, with a map displayed on the left side and user input options on the right. Users have two primary actions they can take within the app. Firstly, they can access hyperspectral imagery to gain valuable crop advisory insights. This feature allows them to make informed decisions regarding their crops based on advanced imaging technology. Secondly, users can plan their harvest and explore different paddy hybrids suitable for their chosen season. In cases where the selected season is not favorable for their intended crops, the application will intelligently suggest alternative favorable seasons, ensuring users always have the best possible options at their disposal.
+
+**2. <u>Integrated**</u>
+
+The application is fully self-contained, providing users with a seamless experience. I prioritized integration within the app itself, minimizing the reliance on external sites or services. For instance, instead of depending on third-party platforms like [geojson.io](geojson.io) for plot outlining, our app offers an in-built solution. Users can conveniently outline their plots directly within the application and export the resulting vector file as a geojson file. This integration enhances user convenience, streamlining the entire workflow within a single environment.
 
 ![gif1](https://github.com/dnezan/llm-crop-recommendation/blob/main/data/gifs/browse.gif?raw=true)
 
-3. **Secure**
+**3. <u>Secure**</u>
 
-4. **Versatile**
+We prioritize the security of our users' data and credentials. To ensure maximum protection, we have implemented stringent security measures. All user credentials are stored in a secure manner, eliminating the risk of unauthorized access. The application leverages robust technologies such as streamlit secrets and Azure Key Vault, depending on the chosen deployment. By adopting these industry-standard security practices, we provide users with peace of mind, knowing that their sensitive information is handled with the utmost care.
+
+**4. <u>Versatile**</u>
+
+Our application offers a wide range of functionalities, making it highly versatile for users. With our app, you can perform various tasks and actions, tailored to meet your specific needs. Whether you are seeking crop advisory insights through hyperspectral imagery or planning your harvest with access to diverse paddy hybrids, our application caters to your requirements. The versatility of the app ensures that users have comprehensive tools at their disposal, empowering them to make informed decisions and optimize their agricultural practices efficiently.
+you can perform multiple functions and the app is very versatile.
 ![gif1](https://github.com/dnezan/llm-crop-recommendation/blob/main/data/gifs/versatile.gif?raw=true)
 
 ## Status
-
-The project is **not ready for production use**.
 
 As of <u>June 26, 2023</u>, the app is live on Streamlit community Cloud and the demo can be accessed by clicking on this **[link](https://agritech-crop-app.streamlit.app/)**. It has also been deployed on Azure as an app service. Keeping in mind I am utilising the free tier of Streamlit Community Cloud, I cannot guarantee that the application will remain accessible indefinitely.
 
@@ -114,5 +117,5 @@ Please keep in mind the app only covers districts from **Tamil Nadu** scraped fr
 
 > **Note**
 > 
-> Kindly be advised that the utilization of `LANDSAT-9` satellite imagery in this project is facilitated through Google Earth Engine. Please note that access to this imagery necessitates the utilization of a designated service account.
+> Kindly be advised that the utilization of LANDSAT-9 satellite imagery in this project is facilitated through `Google Earth Engine`. Please note that access to this imagery necessitates the utilization of a designated service account.
 
