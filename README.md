@@ -2,7 +2,7 @@
 
 **Secure, user-friendly and data-driven agriculture-based Streamlit app deployed on Streamlit Community Cloud/Azure App Service**
 
-![](./assets/reth-alpha.png)
+![](./data/gifs/banner_poc.png)
 
 **[Installation](./install)**
 | [User Book](https://paradigmxyz.github.io/reth)
@@ -52,7 +52,33 @@ service_account = '****.iam.gserviceaccount.com'
 
 ## How does it work?
 
-some sample text here
+We are able to extract plot-specific data by geo-locating the plot using latitude and longitude information. We can gather weather data and forecasts from open-source APIs, such as OpenWeatherMap. We could also source agri-specific weather data such as leaf wetness from Indian state government websites, such as TAWN (TamilNadu Agriculture Weather Network). 
+
+Our map data and hyperspectral satellite imagery is from a satellite called [LANDSAT-9](https://developers.google.com/earth-engine/datasets/catalog/landsat-9), a satellite launched by NASA which allows open access to its data. Its resolution is 30 meters. It circles the Earth every 16 days. If needed, we can also access 5-day data using Sentinel 2 satellite, but at a lower resolution.
+
+**Hyperspectral satellite band explanations**
+
+LANDSAT-9 satellite has 11 different bands, each of which contain specific data. Combinations of these bands can be used to infer different information about land, air and water.
+
+![](./data/gifs/hyper.png)
+
+*RGB*
+
+This is Red-Green-Blue bands, which is used to show true color satellite imagery.
+
+*Infrared*
+
+The color infrared band combination is meant to emphasize healthy and unhealthy vegetation. By using the near-infrared (B8) band, it’s especially good at reflecting chlorophyll. This is why in a color infrared image, denser vegetation is red. But urban areas are white.
+
+*Agriculture*
+
+It’s mostly used to monitor the health of crops because of how it uses short-wave and near-infrared. Both these bands are particularly good at highlighting dense vegetation that appears as dark green. Yellow may also indicate presence of crop infestation or disease.
+
+*NVMI*
+
+The moisture index is ideal for finding water stress in plants. It uses the short-wave and near-infrared to generate an index of moisture content. In general, wetter vegetation has higher values. But lower moisture index values suggest plants are under stress from insufficient moisture.
+
+We can then feed our hyper-local data to our fine-tuned LLM (Large Language Model) to infer further insights and provide them to end-users after transliteration and translation into their native language. We are planning on fine-tuning our LLM using a large corpus of sourced agri data from universities and Indian government institutions. We can also provide retailer information if we have recommendations for fertilisers/pesticides/irrigation requirements.
 
 ## Goals
 1. **Accessible**
@@ -66,50 +92,15 @@ some sample text here
 4. **Versatile**
 ![gif1](https://github.com/dnezan/llm-crop-recommendation/blob/main/data/gifs/versatile.gif?raw=true)
 
-
-
-1. **Modularity**: Every component of Reth is built to be used as a library: well-tested, heavily documented and benchmarked. We envision that developers will import the node's crates, mix and match, and innovate on top of them. Examples of such usage include but are not limited to spinning up standalone P2P networks, talking directly to a node's database, or "unbundling" the node into the components you need. To achieve that, we are licensing Reth under the Apache/MIT permissive license. You can learn more about the project's components [here](./docs/repo/layout.md).
-2. **Performance**: Reth aims to be fast, so we used Rust and the [Erigon staged-sync](https://erigon.substack.com/p/erigon-stage-sync-and-control-flows) node architecture. We also use our Ethereum libraries (including [ethers-rs](https://github.com/gakonst/ethers-rs/) and [revm](https://github.com/bluealloy/revm/)) which we’ve battle-tested and optimized via [Foundry](https://github.com/foundry-rs/foundry/).
-3. **Free for anyone to use any way they want**: Reth is free open source software, built for the community, by the community. By licensing the software under the Apache/MIT license, we want developers to use it without being bound by business licenses, or having to think about the implications of GPL-like licenses.
-4. **Client Diversity**: The Ethereum protocol becomes more antifragile when no node implementation dominates. This ensures that if there's a software bug, the network does not finalize a bad block. By building a new client, we hope to contribute to Ethereum's antifragility.
-5. **Support as many EVM chains as possible**: We aspire that Reth can full-sync not only Ethereum, but also other chains like Optimism, Polygon, BNB Smart Chain, and more. If you're working on any of these projects, please reach out.
-6. **Configurability**: We want to solve for node operators that care about fast historical queries, but also for hobbyists who cannot operate on large hardware. We also want to support teams and individuals who want both sync from genesis and via "fast sync". We envision that Reth will be configurable enough and provide configurable "profiles" for the tradeoffs that each team faces.
-
 ## Status
 
 The project is **not ready for production use**.
 
-As of June 26, 2023, the app is live on Streamlit community Cloud and the demo can be accessed by clicking on this !link(https://agritech-crop-app.streamlit.app/). It has also been deployed on Azure as an app service.
+As of <u>June 26, 2023</u>, the app is live on Streamlit community Cloud and the demo can be accessed by clicking on this **[link](https://agritech-crop-app.streamlit.app/)**. It has also been deployed on Azure as an app service. Keeping in mind I am utilising the free tier of Streamlit Community Cloud, I cannot guarantee that the application will remain accessible indefinitely.
 
-
-We recommend using [`cargo nextest`](https://nexte.st/) to speed up testing. With nextest installed, simply substitute `cargo test` with `cargo nextest run`.
+Please keep in mind the app only covers districts from **Tamil Nadu** scraped from the [TNAU portal](http://www.agritech.tnau.ac.in/expert_system/paddy/seasonvariety.html) georeferenced from ISRO's [Bhuvan](https://bhuvan-app1.nrsc.gov.in/state/PB) state/district boundary data, which was cleaned and exported using [QGIS](https://www.qgis.org/en/site/). Functionality can be extended by scraping additional district-wise data from other state-specific data repositories.
 
 > **Note**
 > 
-> Some tests use random number generators to generate test data. If you want to use a deterministic seed, you can set the `SEED` environment variable.
+> Kindly be advised that the utilization of `LANDSAT-9` satellite imagery in this project is facilitated through Google Earth Engine. Please note that access to this imagery necessitates the utilization of a designated service account.
 
-## Getting Help
-
-If you have any questions, first see if the answer to your question can be found in the [book][book].
-
-If the answer is not there:
-
-- Join the [Telegram][tg-url] to get help, or
-- Open a [discussion](https://github.com/paradigmxyz/reth/discussions/new) with your question, or
-- Open an issue with [the bug](https://github.com/paradigmxyz/reth/issues/new)
-
-## Security
-
-See [`SECURITY.md`](./SECURITY.md).
-
-## Acknowledgements
-
-Reth is a new implementation of the Ethereum protocol. In the process of developing the node we investigated the design decisions other nodes have made to understand what is done well, what is not, and where we can improve the status quo.
-
-None of this would have been possible without them, so big shoutout to the teams below:
-* [Geth](https://github.com/ethereum/go-ethereum/): We would like to express our heartfelt gratitude to the go-ethereum team for their outstanding contributions to Ethereum over the years. Their tireless efforts and dedication have helped to shape the Ethereum ecosystem and make it the vibrant and innovative community it is today. Thank you for your hard work and commitment to the project.
-* [Erigon](https://github.com/ledgerwatch/erigon) (fka Turbo-Geth): Erigon pioneered the ["Staged Sync" architecture](https://erigon.substack.com/p/erigon-stage-sync-and-control-flows) that Reth is using, as well as [introduced MDBX](https://github.com/ledgerwatch/erigon/wiki/Choice-of-storage-engine) as the database of choice. We thank Erigon for pushing the state of the art research on the performance limits of Ethereum nodes.
-* [Akula](https://github.com/akula-bft/akula/): Reth uses forks of the Apache versions of Akula's [MDBX Bindings](https://github.com/paradigmxyz/reth/pull/132), [FastRLP](https://github.com/paradigmxyz/reth/pull/63) and [ECIES](https://github.com/paradigmxyz/reth/pull/80) . Given that these packages were already released under the Apache License, and they implement standardized solutions, we decided not to reimplement them to iterate faster. We thank the Akula team for their contributions to the Rust Ethereum ecosystem and for publishing these packages.
-
-[book]: https://paradigmxyz.github.io/reth/
-[tg-url]: https://t.me/paradigm_reth
