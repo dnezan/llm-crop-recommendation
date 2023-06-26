@@ -6,16 +6,10 @@
   <p align="center">
     Secure, user-friendly and data-driven agriculture-based Streamlit app deployed on Streamlit Community Cloud/Azure App Service 
   </p>
-    <a href="https://github.com/dnezan/streamlit-geoapp-crop-suggestion">
+    <a href="https://github.com/dnezan/streamlit-hyperspectral-agri">
     <img src="./data/gifs/banner_poc.png" alt="Logo">
 </div>
 </br>
-
-
-**[Installation](./install)**
-| [User Book](https://paradigmxyz.github.io/reth)
-| [Developer Docs](./docs)
-| [Demo](https://agritech-crop-app.streamlit.app/)
 
 *The project is still work in progress, see the [disclaimer below](#status).*
 
@@ -23,7 +17,7 @@
 
 Pip install all the package including in *requirements.txt* in a Python>=3.8 environment.
 ```sh
-git clone https://github.com/dnezan/llm-crop-recommendation
+git clone https://github.com/dnezan/streamlit-hyperspectral-agri
 pip install requirements.txt
 ```
 To use your Google Earth Engine service account credentials, make sure to authenticate your access by using the code below, and add your credentials as Streamlit Secrets if you are deploying on Streamlit Community Cloud. You can also use Azure Key Vault if you are deploying on Azure.
@@ -97,7 +91,7 @@ The application aims to provide users with an accessible and user-friendly inter
 
 The application is fully self-contained, providing users with a seamless experience. I prioritized integration within the app itself, minimizing the reliance on external sites or services. For instance, instead of depending on third-party platforms like [geojson.io](geojson.io) for plot outlining, our app offers an in-built solution. Users can conveniently outline their plots directly within the application and export the resulting vector file as a geojson file. This integration enhances user convenience, streamlining the entire workflow within a single environment.
 
-![gif1](https://github.com/dnezan/llm-crop-recommendation/blob/main/data/gifs/browse.gif?raw=true)
+![gif1](https://github.com/dnezan/streamlit-hyperspectral-agri/blob/main/data/gifs/browse.gif?raw=true)
 
 **3. <u>Secure**</u>
 
@@ -107,7 +101,7 @@ We prioritize the security of our users' data and credentials. To ensure maximum
 
 Our application offers a wide range of functionalities, making it highly versatile for users. With our app, you can perform various tasks and actions, tailored to meet your specific needs. Whether you are seeking crop advisory insights through hyperspectral imagery or planning your harvest with access to diverse paddy hybrids, our application caters to your requirements. The versatility of the app ensures that users have comprehensive tools at their disposal, empowering them to make informed decisions and optimize their agricultural practices efficiently.
 you can perform multiple functions and the app is very versatile.
-![gif1](https://github.com/dnezan/llm-crop-recommendation/blob/main/data/gifs/versatile.gif?raw=true)
+![gif1](https://github.com/dnezan/streamlit-hyperspectral-agri/blob/main/data/gifs/versatile.gif?raw=true)
 
 ## Status
 
