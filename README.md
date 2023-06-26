@@ -1,8 +1,20 @@
-# Hyperspectral Satellite Imagery Viewer and Harvest Planning App 
+<br />
+<div align="center">
 
-**Secure, user-friendly and data-driven agriculture-based Streamlit app deployed on Streamlit Community Cloud/Azure App Service**
+  <h2 align="center">Hyperspectral Satellite Imagery Viewer and Harvest Planning App</h2>
 
-![](./data/gifs/banner_poc.png)
+  <p align="center">
+    Secure, user-friendly and data-driven agriculture-based Streamlit app deployed on Streamlit Community Cloud/Azure App Service 
+  </p>
+    <a href="https://github.com/dnezan/streamlit-geoapp-crop-suggestion">
+    <img src="./data/gifs/banner_poc.png" alt="Logo">
+</div>
+</br>
+
+
+# 
+
+
 
 **[Installation](./install)**
 | [User Book](https://paradigmxyz.github.io/reth)
