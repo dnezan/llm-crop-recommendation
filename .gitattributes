@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+*.java linguist-detectable=false
+*.pynb linguist-detectable=false
+*.ipynb linguist-detectable=false
+*.py linguist-detectable=True
